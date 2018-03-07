@@ -76,7 +76,7 @@ sql.select(['u.name', 'u.surname'])
 	.where('name', 'John')
 .sBlockEnd('johnCount')
 .from('users as u')
-```javascript
+```
 
 
 ### ATTENTION : Project is still in progress!!! 
