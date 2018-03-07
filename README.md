@@ -51,6 +51,7 @@ this.conn.queryAsync(sql, [])
 .then((res) => {...})
 .catch((err) => {...})
 ```
+Using nodeSQL:
 ```javascript
 nodesql.select(['u.id', 'u.name', 'u.surname'])
 .from('users as u').where('id','3')
@@ -66,15 +67,15 @@ this.conn.queryAsync(sql, [])
 .then((res) => {...})
 .catch((err) => {...})
 ```
-
+Using nodeSQL:
 ```javascript			
 sql.select(['u.name', 'u.surname'])
-			.sBlockStart()
-				.select([{'func' : 'COUNT', 'value' : '*'}])
-				.from('users')
-				.where('name', 'John')
-			.sBlockEnd('johnCount')
-			.from('users as u')
+.sBlockStart()
+	.select([{'func' : 'COUNT', 'value' : '*'}])
+	.from('users')
+	.where('name', 'John')
+.sBlockEnd('johnCount')
+.from('users as u')
 ```javascript
 
 
