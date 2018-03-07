@@ -69,13 +69,57 @@ this.conn.queryAsync(sql, [])
 ```
 Using nodeSQL:
 ```javascript			
-sql.select(['u.name', 'u.surname'])
+nodesql.select(['u.name', 'u.surname'])
 .sBlockStart()
 	.select([{'func' : 'COUNT', 'value' : '*'}])
 	.from('users')
 	.where('name', 'John')
 .sBlockEnd('johnCount')
 .from('users as u')
+```
+
+#### INSERT QUERIES
+```javascript
+var sql = "INSERT INTO users (name,surname)  VALUES ('Fotis','Bokos')";
+this.conn.queryAsync(sql, [])
+.then((res) => {...})
+.catch((err) => {...})
+```
+Using nodeSQL:
+```javascript
+nodesql.insert('users', {
+	'name' : 'Fotis', 
+	'surname' : 'Bokos', 
+}).execute()
+.then((res) => {...})
+.catch((err) => {...})
+```	
+
+#### UPDATE QUERIES
+```javascript
+var sql = "UPDATE users SET name = 'George',surname = 'Doe' WHERE name = 'John' ";
+
+this.conn.queryAsync(sql, [])
+.then((res) => {...})
+.catch((err) => {...})
+```
+Using nodeSQL:
+```javascript
+nodesql.update('users', {
+	'name' : 'George', 
+	'surname' : 'Doe', 
+}).where('name','John')
+.execute()
+.then((res) => {...})
+.catch((err) => {...})
+```	
+
+nodeSQL also allows the use of JOIN along with UPDATE quries 
+```javascript			
+nodesql.update('pets as p')
+.join('users as u', 'u.name = \'John\'')
+.set('p.owner', 'u.id', true)
+.execute();
 ```
 
 
