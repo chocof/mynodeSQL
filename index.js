@@ -1,7 +1,7 @@
 'use strict';
 
-var nodeSQL = require('./lib/nodesql');
+var nodeSQL = require('./lib/mynodesql');
 
 module.exports = {
-  nodeSQL: nodeSQL,
+  mynodeSQL: nodeSQL,
 };

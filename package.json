@@ -1,5 +1,5 @@
 {
-  "name": "nodesql",
+  "name": "mynodesql",
   "version": "1.0.0",
   "description": "A nodeJS component for prettier mySQL queries",
   "main": "index.js",

@@ -1,4 +1,4 @@
-# nodeSQL
+# mynodeSQL
 
 
 Description
@@ -24,11 +24,11 @@ Usage
 
 #### Connect to DB
 Connecting to the database is very similar to the mysql package. For more information on the
-configuration passes as argument to the nodeSQL constructor visit the [mysql package's github](https://github.com/mysqljs/mysql).
+configuration passes as argument to the mynodesql constructor visit the [mysql package's github](https://github.com/mysqljs/mysql).
 ```javascript
-const ns = require('nodesql');
+const ns = require('mynodesql');
 
-const nodesql = new ns.nodeSQL({
+const mynodesql = new ns.mynodesql({
 	host     : 'localhost',
 	user     : 'root',
 	password : '',
@@ -51,9 +51,9 @@ this.conn.queryAsync(sql, [])
 .then((res) => {...})
 .catch((err) => {...})
 ```
-Using nodeSQL:
+Using mynodesql:
 ```javascript
-nodesql.select(['u.id', 'u.name', 'u.surname'])
+mynodesql.select(['u.id', 'u.name', 'u.surname'])
 .from('users as u').where('id','3')
 .execute()
 .then((res) => {...})
@@ -67,9 +67,9 @@ this.conn.queryAsync(sql, [])
 .then((res) => {...})
 .catch((err) => {...})
 ```
-Using nodeSQL:
+Using mynodesql:
 ```javascript			
-nodesql.select(['u.name', 'u.surname'])
+mynodesql.select(['u.name', 'u.surname'])
 .sBlockStart()
 	.select([{'func' : 'COUNT', 'value' : '*'}])
 	.from('users')
@@ -85,9 +85,9 @@ this.conn.queryAsync(sql, [])
 .then((res) => {...})
 .catch((err) => {...})
 ```
-Using nodeSQL:
+Using mynodesql:
 ```javascript
-nodesql.insert('users', {
+mynodesql.insert('users', {
 	'name' : 'Fotis', 
 	'surname' : 'Bokos', 
 }).execute()
@@ -97,15 +97,15 @@ nodesql.insert('users', {
 
 #### UPDATE QUERIES
 ```javascript
-var sql = "UPDATE users SET name = 'George',surname = 'Doe' WHERE name = 'John' ";
+var sql = "UPDATE users SET name = 'George',surname = 'Doe' WHERE name = 'John'";
 
 this.conn.queryAsync(sql, [])
 .then((res) => {...})
 .catch((err) => {...})
 ```
-Using nodeSQL:
+Using mynodesql:
 ```javascript
-nodesql.update('users', {
+mynodesql.update('users', {
 	'name' : 'George', 
 	'surname' : 'Doe', 
 }).where('name','John')
@@ -114,12 +114,14 @@ nodesql.update('users', {
 .catch((err) => {...})
 ```	
 
-nodeSQL also allows the use of JOIN along with UPDATE quries 
+mynodesql also allows the use of JOIN along with UPDATE quries 
 ```javascript			
-nodesql.update('pets as p')
-.join('users as u', 'u.name = \'John\'')
+mynodesql.update('pets as p')
+.join('users as u', 'u.name = \'John\)
 .set('p.owner', 'u.id', true)
-.execute();
+.execute()
+.then((res) => {...})
+.catch((err) => {...})
 ```
 
 

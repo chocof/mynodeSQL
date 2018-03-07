@@ -1,4 +1,4 @@
-const nodesql = require('../index');
+const mynodesql = require('../index');
 
 //init chance in order to create random strings
 var Chance 		= require('chance');
@@ -6,7 +6,7 @@ var chance 		= new Chance();
 var expect 		= require('chai').expect;
 var should 		= require('should');
 
-const sql = new nodesql.nodeSQL({
+const sql = new mynodesql.mynodeSQL({
 	host     : 'localhost',
 	user     : 'root',
 	password : '',
@@ -14,7 +14,7 @@ const sql = new nodesql.nodeSQL({
 	multipleStatements: true 
 }).connect()
 
-describe('------------------nodeSQL------------------',function(){
+describe('------------------mynodesql------------------',function(){
 	// close database when test is over
 	after('Close Database Connection',function(done){
 		sql.delete().from('pets')
