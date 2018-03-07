@@ -28,7 +28,7 @@ configuration passes as argument to the mynodesql constructor visit the [mysql p
 ```javascript
 const ns = require('mynodesql');
 
-const mynodesql = new ns.mynodesql({
+const mynodesql = new ns.mynodeSQL({
 	host     : 'localhost',
 	user     : 'root',
 	password : '',
